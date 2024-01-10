@@ -1,55 +1,67 @@
-# Astro Starter Kit: Basics
+# Configuración prettier / eslint / order tailwind
 
-```sh
-npm create astro@latest -- --template basics
+`bun create astro@latest .`
+
+## prettier
+
+https://docs.astro.build/en/editor-setup/#prettier
+
+`bun install --save-dev prettier prettier-plugin-astro`
+
+## eslint
+
+https://ota-meshi.github.io/eslint-plugin-astro/user-guide/
+
+`bun install --save-dev eslint eslint-plugin-astro`
+
+then create a `.eslintrc.*`
+
+and for example for cjs:
+
+```
+module.exports = {
+  // ...
+  extends: [
+    // ...
+    "plugin:astro/recommended",
+  ],
+  // ...
+  overrides: [
+    {
+      // Define the configuration for `.astro` file.
+      files: ["*.astro"],
+      // Allows Astro components to be parsed.
+      parser: "astro-eslint-parser",
+      // Parse the script in `.astro` as TypeScript by adding the following configuration.
+      // It's the setting you need when using TypeScript.
+      parserOptions: {
+        parser: "@typescript-eslint/parser",
+        extraFileExtensions: [".astro"],
+      },
+      rules: {
+        // override/add rules settings here, such as:
+        // "astro/no-set-html-directive": "error"
+      },
+    },
+    // ...
+  ],
+}
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+and cofigure it at will
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## tailwind
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+https://tailwindcss.com/blog/automatic-class-sorting-with-prettier
 
-## 🚀 Project Structure
+`bunx astro add tailwind`
 
-Inside of your Astro project, you'll see the following folders and files:
+then
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+`bun install -D prettier prettier-plugin-tailwindcss`
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+and add this to .prettierrc
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-# astroTemplate
+`{
+  "plugins": ["prettier-plugin-tailwindcss"]
+}`
