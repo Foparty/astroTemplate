@@ -1,5 +1,7 @@
 # Configuración prettier / eslint / order tailwind
 
+## this is a template to start a new astro project with NOTHING but prettier / eslint / and tailwind configured
+
 `bun create astro@latest .`
 
 ## prettier
