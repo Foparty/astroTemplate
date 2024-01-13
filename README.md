@@ -67,3 +67,11 @@ and add this to .prettierrc
 `{
   "plugins": ["prettier-plugin-tailwindcss"]
 }`
+
+## tailwind @container setup
+
+https://github.com/tailwindlabs/tailwindcss-container-queries
+
+## tailwind typography
+
+https://tailwindcss.com/docs/typography-plugin
